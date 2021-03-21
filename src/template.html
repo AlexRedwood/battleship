@@ -6,6 +6,34 @@
     <title>Game</title>
   </head>
   <body>
-    <div id="game"></div>
+    <section class="game df ac">
+      <header class="df center">
+        <div class="message df jc">
+          <p>It’s ship placement phase.</p>
+          <p>You can place your ships on the board by draggin them.</p>
+        </div>
+      </header>
+
+      <section class="ships-to-place df">
+        <div class="ship-container df ac" id="submarine">
+          <div class="ship-template"></div>
+          <div class="ship-quantity df center">x 4</div>
+        </div>
+        <div class="ship-container df ac" id="carrier">
+          <div class="ship-template"></div>
+          <div class="ship-quantity df center">x 1</div>
+        </div>
+        <div class="ship-container df ac" id="cruiser">
+          <div class="ship-template"></div>
+          <div class="ship-quantity df center">x 3</div>
+        </div>
+        <div class="ship-container df ac" id="battleship">
+          <div class="ship-template"></div>
+          <div class="ship-quantity df center">x 2</div>
+        </div>
+      </section>
+
+      <section class="user-board"></section>
+    </section>
   </body>
 </html>

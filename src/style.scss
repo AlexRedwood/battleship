@@ -1,15 +1,117 @@
-html,
-body {
-  margin: 0 auto;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(88, 39, 20);
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap");
+
+$light-color: #ffffff;
+$dark-color: #000000;
+$cell-w-h: 35px;
+$cell-borderw: 1px;
+
+.df {
+  display: flex;
 }
 
-#game {
-  margin: 10px auto;
+.jc {
+  justify-content: center;
+}
+
+.ac {
+  align-items: center;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: $light-color;
+  font-family: "Montserrat Alternates", sans-serif;
+  box-sizing: border-box;
+}
+
+.game {
   padding: 0;
-  width: 800px;
-  height: 640px;
+  width: 350px;
+  height: 100%;
+  flex-direction: column;
+  margin: auto;
+}
+
+header {
+  width: 100%;
+  padding-top: 23px;
+
+  .message {
+    width: 330px;
+    height: 77px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid $dark-color;
+    border-radius: 5px;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    font-size: 1rem;
+    flex-direction: column;
+
+    p {
+      margin: auto;
+    }
+  }
+}
+
+.ships-to-place {
+  margin-top: 30px;
+  width: 100%;
+  height: 90px;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  #submarine,
+  #cruiser {
+    width: 150px;
+  }
+
+  .ship-container {
+    padding: 10px 0;
+
+    .ship-template {
+      padding-right: 10px;
+      .ship-placementPhase {
+        .cell-placementPhase {
+          width: calc(#{$cell-w-h} - #{$cell-borderw} * 2);
+          height: calc(#{$cell-w-h} - #{$cell-borderw} * 2);
+          border: $cell-borderw solid $dark-color;
+          margin-left: -1px;
+
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+    .ship-quantity {
+      text-align: center;
+    }
+  }
+}
+
+.user-board {
+  margin: 30px;
+  width: 350px;
+  height: 350px;
+  background-color: $light-color;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  border-bottom: $cell-borderw solid $dark-color;
+  border-left: $cell-borderw solid $dark-color;
+
+  .user-cell {
+    width: calc(#{$cell-w-h} - #{$cell-borderw});
+    height: calc(#{$cell-w-h} - #{$cell-borderw});
+    border-top: $cell-borderw solid $dark-color;
+    border-right: $cell-borderw solid $dark-color;
+  }
 }
