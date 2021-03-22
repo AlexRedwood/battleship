@@ -1,16 +1,22 @@
+import { Board } from "../gamelogic/board";
+
 class Renderer {
-  constructor() {}
+  renderBoard(board: Board): void {
+    let boardElement = document.getElementsByClassName("user-board")[0];
 
-  renderBoard(state: any[][]): void {
-    let board = document.getElementsByClassName("user-board")[0];
-    console.log(state);
-
-    for (let row of state) {
+    for (let row of board.state) {
       for (let obj of row) {
         let cell = document.createElement("div");
         cell.classList.add("user-cell");
+        if (board.name === "Player" && obj.hasShip && !obj.isShot)
+          cell.classList.add("user-shipcell");
+        if (board.name === "Player" && !obj.hasShip && !obj.placeable)
+          cell.classList.add("cell-unplaceable");
+        if (obj.hasShip && obj.isShot) cell.classList.add("hit");
+        if (!obj.hasShip && obj.isShot) cell.classList.add("miss");
+
         cell.setAttribute("id", `${obj.coord[0]}-${obj.coord[1]}`);
-        board.appendChild(cell);
+        boardElement.appendChild(cell);
       }
     }
   }
@@ -46,6 +52,7 @@ class Renderer {
     const div = document.createElement("div");
     div.classList.add("ship-placementPhase");
     div.classList.add("df");
+    div.draggable = true;
     for (let i = 0; i < shipSize; i++) {
       let cell = document.createElement("div");
       cell.classList.add("cell-placementPhase");

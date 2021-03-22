@@ -1,12 +1,18 @@
 import "normalize.css";
+import { Controller } from "./controller/controller";
 
 import { Game } from "./gamelogic/game";
-import { Renderer } from "./render/render";
+import { Renderer } from "./render/renderer";
+
 import "./style.scss";
 
-let g = new Game();
-
+let game = new Game();
 let renderer = new Renderer();
+let controller = new Controller(game, renderer);
 
-renderer.renderAllShipsPlacementPhase(g.getShipComposition());
-renderer.renderBoard(g.userBoard.state);
+// Initial rendering of empty cells
+renderer.renderAllShipsPlacementPhase(game.user.comp);
+renderer.renderBoard(game.userBoard);
+
+// Initialize ships for placement
+controller.initShipsForPlacement();

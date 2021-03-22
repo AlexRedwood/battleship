@@ -22,17 +22,6 @@ class Game {
     this.initRandomShips(); // fill the AIboard with random ships
   }
 
-  getShipComposition() {
-    let composition = [
-      { name: "carrier", quantity: 1, size: 5 },
-      { name: "battleship", quantity: 2, size: 4 },
-      { name: "cruiser", quantity: 3, size: 3 },
-      { name: "submarine", quantity: 4, size: 2 },
-    ];
-
-    return composition;
-  }
-
   createRandomShipConfig(name: string, size: number): any {
     let randomCell = this.AIboard.getRandomAvailableCell(size);
     // return null if there are no empty cells on the board for a ship with certain size
@@ -67,7 +56,7 @@ class Game {
   }
 
   initRandomShips() {
-    let composition = this.getShipComposition();
+    let composition = this.ai.comp;
     for (let shipComp of composition) {
       for (let i = 0; i < shipComp.quantity; i++) {
         let name = shipComp.name + i.toString();

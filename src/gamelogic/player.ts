@@ -5,12 +5,19 @@ class Player {
   ships: Ship[];
   shipQuantity: number;
   lost: boolean;
+  comp: { name: string; quantity: number; size: number }[];
 
   constructor(name: string) {
     this.name = name;
     this.ships = [];
     this.shipQuantity = 10;
     this.lost = false;
+    this.comp = [
+      { name: "carrier", quantity: 1, size: 5 },
+      { name: "battleship", quantity: 2, size: 4 },
+      { name: "cruiser", quantity: 3, size: 3 },
+      { name: "submarine", quantity: 4, size: 2 },
+    ];
   }
 
   shoot(coord: number[], board: any[][], enemyPlayer: Player): void {

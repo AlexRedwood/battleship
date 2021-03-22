@@ -2,6 +2,8 @@
 
 $light-color: #ffffff;
 $dark-color: #000000;
+$darker-light-color: #f0f0f0;
+$select-color: rgb(14, 84, 235);
 $cell-w-h: 35px;
 $cell-borderw: 1px;
 
@@ -79,15 +81,32 @@ header {
     .ship-template {
       padding-right: 10px;
       .ship-placementPhase {
+        cursor: pointer;
+        transition: transform 0.2s ease-out, box-shadow 0.2s ease-out,
+          background-color 0.2s ease-out;
+
+        &:hover {
+          background-color: $darker-light-color;
+        }
+
         .cell-placementPhase {
           width: calc(#{$cell-w-h} - #{$cell-borderw} * 2);
           height: calc(#{$cell-w-h} - #{$cell-borderw} * 2);
           border: $cell-borderw solid $dark-color;
           margin-left: -1px;
+          background-color: inherit;
+          transition: color 0.2s ease-out;
 
           &:first-child {
             margin-left: 0;
           }
+        }
+
+        &.active {
+          transform: translate(0, -3px);
+          -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.36);
+          box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.36);
+          background-color: $darker-light-color;
         }
       }
     }
@@ -113,5 +132,21 @@ header {
     height: calc(#{$cell-w-h} - #{$cell-borderw});
     border-top: $cell-borderw solid $dark-color;
     border-right: $cell-borderw solid $dark-color;
+  }
+
+  .user-shipcell {
+    background-color: rgb(86, 100, 131);
+  }
+
+  .hit {
+    background-color: red;
+  }
+
+  .miss {
+    background-color: rgb(47, 216, 216);
+  }
+
+  .cell-unplaceable {
+    background-color: grey;
   }
 }
